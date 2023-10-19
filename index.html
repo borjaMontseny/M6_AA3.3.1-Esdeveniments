@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>AA3.3.1 - Esdeveniments de ratolí i teclat</title>
+	<style>
+		* {
+			box-sizing: border-box;
+		}
+
+		body {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+
+		button {
+			font-size: 1.2em;
+		}
+	</style>
+</head>
+
+<body>
+	<button value="click" name="click event" onclick="eventManager(event)">onclick</button>
+	<button value="dblclick" name="double click event" ondblclick="eventManager(event)">ondblclick</button>
+	<button value="mousedown" name="mousedown event" onmousedown="eventManager(event)">onmousedown</button>
+	<button value="mouseup" name="mouseup event" onmouseup="eventManager(event)">onmouseup</button>
+	<button value="mouseover" name="mouseover event" onmouseover="eventManager(event)">onmouseover</button>
+	<button value="mouseout" name="double click event" onmouseout="eventManager(event)">onmouseout</button>
+	<script>
+
+		document.body.addEventListener('keydown', eventManager);
+
+		function eventManager(event) {
+			console.log(event.type);
+			switch (event.type) {
+				case "click":
+					alert("Has fet clic.");
+					break;
+
+				case "dblclick":
+					alert("Has fet doble clic.");
+					break;
+
+				case "mousedown":
+					alert("Has premut el botó.");
+					break;
+
+				case "mouseup":
+					alert("Has soltat el botó.");
+					break;
+
+				case "mouseover":
+					alert("Has deixat el ratolí al botó.");
+					break;
+
+				case "mouseout":
+					alert("Has tret el ratolí del botó.");
+					break;
+
+				case "keydown":
+					let randomColor = Math.floor(Math.random() * 16777215).toString(16);
+					let rgbValue = "#" + randomColor;
+					document.body.style.backgroundColor = rgbValue;
+					break;
+
+				default:
+					break;
+			}
+
+		}
+	</script>
+</body>
+
+</html>
